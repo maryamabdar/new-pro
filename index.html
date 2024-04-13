@@ -1,0 +1,186 @@
+<html>
+    <head>
+    <title>Resturant Menu</title>
+    <link rel="stylesheet" href="style.css">
+
+    </head>
+    <body>
+        <h1 class="title">منوی رستوران</h1>
+        <ul class="menu">
+            <li><button onclick="all()">همه</button></li>
+            <li><button onclick="mainFood()">غذای اصلی</button></li>
+            <li><button onclick="hotDrink()">نوشیدنی گرم</button></li>
+            <li><button onclick="coldDrink()">نوشیدنی سرد</button></li>
+            <li><button onclick="appetizer()">پیش غذا</button></li>
+           
+
+        </ul>
+    
+        <div class="menu-list">
+            <div class="container">
+                    <div class="items row pt-6">
+
+                    </div>     
+            </div>
+        </div>
+        <script>
+            var food=[
+                {
+                    name: "پیتزا",
+                    typefood: "mainFood",
+                    img: "img/pizza.jpg",
+                    
+                },
+                {
+                name: "ساندویچ",
+                typefood: "mainFood",
+                img: "img/sand.jpg",
+                
+            },
+            {
+                name: "همبرگر",
+                typefood: "mainFood",
+                img: "img/ham.jpg",
+                
+            },
+                {
+                    name:"نوشابه",
+                    typefood:"coldDrink",
+                    img:"img/cola.jpg",
+                },
+                {
+                name:"دلستر",
+                typefood:"coldDrink",
+                img:"img/delester.jpg",
+            },
+                {
+                    name:"قهوه",
+                    typefood:"hotDrink",
+                    img:"img/coffie.jpg",
+                },
+                {
+                    name:"چایی",
+                    typefood:"hotDrink",
+                    img:"img/tea.jpg",
+                },
+                {
+                    name:"سالاد",
+                    typefood:"appetizer",
+                    img:"img/sal.jpg",
+                }
+            ]
+        
+            function all(){
+                var ul = document.createElement("UL");
+                var items=document.querySelector(".items");
+               str="";
+                items.innerHTML="";                                  
+                items.appendChild(ul);
+                for(var i =0;i<food.length;i++){
+
+                 var li = document.createElement("LI");
+                 li.classList.add("item");
+                 li.textContent= food[i].name;
+                 ul.appendChild(li);
+                 str +="<div class='col-6 d-flex justify-center'><img src="+ food[i].img
+                 + " class='img-food img-size'/><div><h4 class='d-flex space-between'><span>"+ food[i].name
+                  +"</p></div></div>";
+                
+            }
+            items.innerHTML=str;
+        }
+            function mainFood(){
+                var ul = document.createElement("UL");
+                var items=document.querySelector(".items");
+               str="";
+                items.innerHTML="";
+                items.appendChild(ul);              
+                var foodMenu= food.filter(filterByTyp);
+                function filterByTyp(item){
+                   return item.typefood==="mainFood";
+                }
+                for(var i =0;i<foodMenu.length;i++){
+                 var li = document.createElement("LI");
+                 li.classList.add("item");
+                 li.textContent= foodMenu[i].name;
+                 ul.appendChild(li);
+                 str +="<div class='col-6 d-flex justify-center'><img src="+ foodMenu[i].img
+                 + " class='img-food img-size'/><div><h4 class='d-flex space-between'><span>"+ foodMenu[i].name
+                  +"</p></div></div>";
+                }
+                items.innerHTML=str;
+          
+            }
+            function coldDrink(){
+                var ul = document.createElement("UL");
+                var items=document.querySelector(".items");
+               str="";
+                
+                items.innerHTML="";
+                items.appendChild(ul)
+                 var foodMenu= food.filter(filterByTyp);
+                function filterByTyp(item){
+                   return item.typefood==="coldDrink";
+                };
+                for(var i =0;i<foodMenu.length;i++){
+                 var li = document.createElement("LI");
+                 li.classList.add("item");
+                 li.textContent= foodMenu[i].name;
+                 ul.appendChild(li);
+                 str +="<div class='col-6 d-flex justify-center'><img src="+ foodMenu[i].img
+                 + " class='img-food img-size'/><div><h4 class='d-flex space-between'><span>"+ foodMenu[i].name
+                  +"</p></div></div>";
+                }
+                items.innerHTML=str;
+
+            }
+            function hotDrink(){
+                var ul = document.createElement("UL");
+                var items=document.querySelector(".items");
+               str="";
+                
+                items.innerHTML="";
+                items.appendChild(ul)
+                 var foodMenu= food.filter(filterByTyp);
+                function filterByTyp(item){
+                   return item.typefood==="hotDrink";
+                };
+                for(var i =0;i<foodMenu.length;i++){
+                 var li = document.createElement("LI");
+                 li.classList.add("item");
+                 li.textContent= foodMenu[i].name;
+                 ul.appendChild(li);
+                 str +="<div class='col-6 d-flex justify-center'><img src="+ foodMenu[i].img
+                 + " class='img-food img-size'/><div><h4 class='d-flex space-between'><span>"+ foodMenu[i].name
+                  +"</p></div></div>";
+                }
+                items.innerHTML=str;
+
+            }
+            function appetizer(){
+                var ul = document.createElement("UL");
+                var items=document.querySelector(".items");
+                str="";
+                items.innerHTML="";
+                items.appendChild(ul)
+                 var foodMenu= food.filter(filterByTyp);
+                function filterByTyp(item){
+                   return item.typefood==="appetizer";
+                };
+                for(var i =0;i<foodMenu.length;i++){
+                 var li = document.createElement("LI");
+                 li.classList.add("item");
+                 li.textContent= foodMenu[i].name;
+                 ul.appendChild(li);
+                 str +="<div class='col-6 d-flex justify-center'><img src="+ foodMenu[i].img
+                 + " class='img-food img-size'/><div><h4 class='d-flex space-between'><span>"+ foodMenu[i].name
+                  +"</p></div></div>";
+                }
+                items.innerHTML=str;
+
+            }
+            
+all();
+        </script>
+    </body>
+</html>
